@@ -6,7 +6,7 @@ export class LoginPage {
     }
 
     async inputUserPassword(userPassword) {
-        await loginPageElements.loginInput.setValue(userPassword);
+        await loginPageElements.passwordInput.setValue(userPassword);
     }
 
     async clickSubmitButton() {
