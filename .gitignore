@@ -6,3 +6,4 @@
 .husky
 log
 .env
+package-lock.json
