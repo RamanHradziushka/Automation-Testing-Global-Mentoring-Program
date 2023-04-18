@@ -1,0 +1,8 @@
+**/node_modules
+**/build
+**/*.log
+**/.vscode
+.idea
+.husky
+log
+.env
