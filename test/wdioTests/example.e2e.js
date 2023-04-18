@@ -6,7 +6,6 @@ describe('My Login application', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.open()
 
-        logger.debug('try to login')
         logger.info('try to login')
         
         await LoginPage.login('tomsmith', 'SuperSecretPassword!')
