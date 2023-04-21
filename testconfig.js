@@ -1,5 +1,4 @@
 require('dotenv').config();
-//import {Platform} from './testData/testData';
 
 export const testConfig = {
     userName: process.env.ADMINUSERNAME,

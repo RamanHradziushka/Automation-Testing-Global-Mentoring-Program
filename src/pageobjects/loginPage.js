@@ -26,10 +26,14 @@ class LoginPage extends Page {
         await this.inputPassword.setValue(password);
     }
 
+    async clickLoginButton() {
+        await this.btnSubmit.click();
+    }
+
     async login(username, password) {
         await this.fillUserName(username);
         await this.fillPassword(password);
-        await this.btnSubmit.click();
+        await this.clickLoginButton();
     }
 
     open () {
