@@ -6,6 +6,13 @@ const Page = require('./page');
  * sub page containing specific selectors and methods for a specific page
  */
 class LoginPage extends Page {
+
+    constructor(browser) {
+        super(browser);
+        this.url = "/";
+        this._browser = browser
+    }
+    
     get inputUsername () {
         return $('input[name="login"]');
     }
@@ -41,4 +48,4 @@ class LoginPage extends Page {
     }
 }
 
-module.exports = new LoginPage();
+module.exports = LoginPage;
