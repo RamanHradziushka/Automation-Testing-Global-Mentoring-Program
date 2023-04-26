@@ -8,4 +8,4 @@ describe('My Login application', () => {
         logger.info('try to login');
         await LoginPage.login(process.env.ADMINUSERNAME, process.env.ADMINPASSWORD);
     })
-})
+});
