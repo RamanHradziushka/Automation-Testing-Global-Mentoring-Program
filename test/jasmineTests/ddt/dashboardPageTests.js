@@ -4,14 +4,14 @@ const editDashboardComponent = require('../../../src/pageobjects/editDashboardCo
 const LoginPage = require('../../../src/pageobjects/loginPage');
 const sidebarComponent = require('../../../src/pageobjects/sidebarComponent');
 
-describe('Check statistics items in the widget Dashboard page', () => {
+describe('Dashboard Page tests', () => {
 	beforeAll(async function () {
 		await LoginPage.open();
 		await LoginPage.login(process.env.ADMINUSERNAME, process.env.ADMINPASSWORD);
 	});
 
 	describe('Check statistics items in the widget Dashboard page', () => {
-		it('login with valid credentials', async () => {
+		it('Step 1 - Open project, select dashboard and check statistics items', async () => {
 			await sidebarComponent.openProject('automated_testing_global_mentoring_program');
 			await dashboardsPage.selectDashboard('DEMO DASHBOARD');
 			let statisticsItems = await dashboardsPage.getLaunchStatisticsItems();
@@ -33,7 +33,7 @@ describe('Check statistics items in the widget Dashboard page', () => {
 			await editDashboardComponent.clickUpdateButton();
 		});
 
-		it('login with valid credentials', async () => {
+		it('Step 1 - Open project, select dashboard, update description and check it', async () => {
 			await sidebarComponent.openProject('automated_testing_global_mentoring_program');
 			await dashboardsPage.selectDashboard('DEMO DASHBOARD');
 			await dashboardsPage.clickEditDashboardButton();
