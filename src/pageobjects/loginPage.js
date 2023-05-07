@@ -1,39 +1,36 @@
 const Page = require('./page');
+const elementHelper = require('../helpers/elementHelper');
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
 class LoginPage extends Page {
-    
-    get inputUsername () {
-        return $('input[name="login"]');
-    }
+	static getInputUsernameElement() {
+		return $('input[name="login"]');
+	}
 
-    get inputPassword () {
-        return $('input[name="password"]');
-    }
+	static getInputPasswordElement() {
+		return $('input[name="password"]');
+	}
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
-    }
+	static getBtnSubmitElement() {
+		return $('button[type="submit"]');
+	}
 
-    async fillUserName(username) {
-        await this.inputUsername.setValue(username);
-    }
+	static async fillUserName(username) {
+		await elementHelper.setValue(LoginPage.getInputUsernameElement(), username);
+	}
 
-    async fillPassword(password) {
-        await this.inputPassword.setValue(password);
-    }
+	static async fillPassword(password) {
+		await elementHelper.setValue(LoginPage.getInputPasswordElement(), password);
+	}
 
-    async clickLoginButton() {
-        await this.btnSubmit.click();
-    }
+	static async clickLoginButton() {
+		await elementHelper.click(LoginPage.getBtnSubmitElement());
+	}
 
-    async login(username, password) {
-        await this.fillUserName(username);
-        await this.fillPassword(password);
-        await this.clickLoginButton();
-    }
+	static async login(username, password) {
+		await LoginPage.fillUserName(username);
+		await LoginPage.fillPassword(password);
+		await LoginPage.clickLoginButton();
+	}
 }
 
-module.exports = new LoginPage();
+module.exports = LoginPage;
