@@ -30,6 +30,10 @@ class SidebarComponent extends Page {
 		await SidebarComponent.openProjectSelectorMenu();
 		await SidebarComponent.selectProject(projectName);
 	}
+
+	static async openDashboards() {
+		await SidebarComponent.openMenu('dashboard');
+	}
 }
 
 module.exports = SidebarComponent;

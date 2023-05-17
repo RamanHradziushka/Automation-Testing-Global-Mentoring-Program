@@ -1,4 +1,5 @@
-const timeouts = require('./timeouts');
+const timeouts = require('../../data/timeouts');
+const Page = require('../pageobjects/page');
 
 const elementHelper = {
 	click: async function (element) {

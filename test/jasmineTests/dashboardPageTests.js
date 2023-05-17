@@ -1,8 +1,8 @@
-const {testData} = require('../../../data/testData');
-const dashboardsPage = require('../../../src/pageobjects/dashboardsPage');
-const editDashboardComponent = require('../../../src/pageobjects/editDashboardComponent');
-const LoginPage = require('../../../src/pageobjects/loginPage');
-const sidebarComponent = require('../../../src/pageobjects/sidebarComponent');
+const {testData} = require('../../data/testData');
+const dashboardsPage = require('../../src/pageobjects/dashboardsPage');
+const editDashboardComponent = require('../../src/pageobjects/editDashboardComponent');
+const LoginPage = require('../../src/pageobjects/loginPage');
+const sidebarComponent = require('../../src/pageobjects/sidebarComponent');
 
 describe('Dashboard Page tests', () => {
 	beforeAll(async function () {

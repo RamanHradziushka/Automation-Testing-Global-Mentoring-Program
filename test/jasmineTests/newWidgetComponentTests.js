@@ -1,8 +1,8 @@
-const {testData} = require('../../../data/testData');
-const addNewWidgetComponent = require('../../../src/pageobjects/addNewWidgetComponent');
-const dashboardsPage = require('../../../src/pageobjects/dashboardsPage');
-const LoginPage = require('../../../src/pageobjects/loginPage');
-const sidebarComponent = require('../../../src/pageobjects/sidebarComponent');
+const {testData} = require('../../data/testData');
+const addNewWidgetComponent = require('../../src/pageobjects/addNewWidgetComponent');
+const dashboardsPage = require('../../src/pageobjects/dashboardsPage');
+const LoginPage = require('../../src/pageobjects/loginPage');
+const sidebarComponent = require('../../src/pageobjects/sidebarComponent');
 
 describe('Check new widget types', () => {
 	beforeAll(async function () {
