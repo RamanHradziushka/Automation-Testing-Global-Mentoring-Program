@@ -78,10 +78,6 @@ class DashboardsPage extends Page {
 		return await elementHelper.getText(DashboardsPage.getDashboardDescriptionByNameElement(name));
 	}
 
-	static async getDashboardSharedByName(name) {
-		return await DashboardsPage.getDashboardSharedByNameElement(name).isDisplayed();
-	}
-
 	static async clickDashboardEditByNameButton(name) {
 		await elementHelper.click(DashboardsPage.getDashboardEditByNameElement(name));
 		await EditDashboardComponent.getEditDashboardHeaderElement().waitForDisplayed({timeout: timeouts.medium});
