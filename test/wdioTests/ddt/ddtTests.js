@@ -59,7 +59,7 @@ describe('Dashboard Page tests', () => {
 		}
 	});
 
-	describe('Check dashboards launch statistics', () => {
+	describe.only('Check dashboards launch statistics', () => {
 		const dashboards = testData.dashboardsLaunchStatisticsArea;
 
 		it('Step 1 - Open project', async () => {

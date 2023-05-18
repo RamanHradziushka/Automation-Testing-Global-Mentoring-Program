@@ -1,7 +1,7 @@
 const elementHelper = require('../helpers/elementHelper');
-const Page = require('./page');
+const BaseComponent = require('./baseComponent');
 
-class AddNewWidgetComponent extends Page {
+class AddNewWidgetComponent extends BaseComponent {
 	static getWidgetTypeElements() {
 		return $$('div[class*="widget-type-item-name"]');
 	}

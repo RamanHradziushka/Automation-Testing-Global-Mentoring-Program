@@ -1,7 +1,7 @@
 const elementHelper = require('../helpers/elementHelper');
-const Page = require('./page');
+const BaseComponent = require('./baseComponent');
 
-class EditDashboardComponent extends Page {
+class EditDashboardComponent extends BaseComponent {
 	static getEditDashboardHeaderElement() {
 		return $('//span[contains(text(), "Edit Dashboard")]');
 	}

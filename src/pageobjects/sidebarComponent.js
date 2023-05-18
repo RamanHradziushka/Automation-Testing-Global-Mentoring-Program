@@ -1,7 +1,7 @@
-const Page = require('./page');
+const BaseComponent = require('./baseComponent');
 const elementHelper = require('../helpers/elementHelper');
 
-class SidebarComponent extends Page {
+class SidebarComponent extends BaseComponent {
 	static getMenuByNameElement(name) {
 		return $(`div[class*="sidebar"] > a[href*="${name}"]`);
 	}
