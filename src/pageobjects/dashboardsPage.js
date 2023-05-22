@@ -1,5 +1,5 @@
 const elementHelper = require('../helpers/elementHelper');
-const timeouts = require('../../data/timeouts');
+const timeouts = require('../data/timeouts');
 const Page = require('./page');
 const EditDashboardComponent = require('./editDashboardComponent');
 

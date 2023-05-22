@@ -25,7 +25,7 @@ exports.config = {
 	// then the current working directory is where your `package.json` resides, so `wdio`
 	// will be called from there.
 	//
-	specs: ['../../features/**/*.feature'],
+	specs: ['../test/**/*.feature'],
 	// Patterns to exclude.
 	exclude: [
 		// 'path/to/excluded/files'
@@ -162,7 +162,7 @@ exports.config = {
 		// <string[]> (name) specify the profile to use
 		profile: [],
 		// <string[]> (file/dir) require files before executing features
-		require: ['./features/setup/steps.js', './features/setup/hooks.js'],
+		require: ['./src/features/setup/steps.js', './src/features/setup/hooks.js'],
 		scenarioLevelReporter: false,
 		order: 'defined',
 		// <string> specify a custom snippet syntax

@@ -1,10 +1,10 @@
 const {Given, When, Then} = require('@cucumber/cucumber');
 const {expect} = require('chai');
-const LoginPage = require('../../src/pageobjects/loginPage');
-const SidebarComponent = require('../../src/pageobjects/sidebarComponent');
-const DashboardsPage = require('../../src/pageobjects/dashboardsPage');
-const EditDashboardComponent = require('../../src/pageobjects/editDashboardComponent');
-const AddNewWidgetComponent = require('../../src/pageobjects/addNewWidgetComponent');
+const LoginPage = require('../../pageobjects/loginPage');
+const SidebarComponent = require('../../pageobjects/sidebarComponent');
+const DashboardsPage = require('../../pageobjects/dashboardsPage');
+const EditDashboardComponent = require('../../pageobjects/editDashboardComponent');
+const AddNewWidgetComponent = require('../../pageobjects/addNewWidgetComponent');
 const {testData} = require('../../data/testData');
 
 Given('I open login page', async function () {
@@ -17,6 +17,10 @@ Given('I log in with the ADMINUSERNAME and ADMINPASSWORD credentials', async fun
 
 Given('I open the project {string}', async function (projectName) {
 	await SidebarComponent.openProject(projectName);
+});
+
+Given('I open dashboards page', async function () {
+	await SidebarComponent.openDashboards();
 });
 
 When('I select the dashboard named {string}', async function (dashboardName) {

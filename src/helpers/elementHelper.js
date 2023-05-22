@@ -1,4 +1,4 @@
-const timeouts = require('../../data/timeouts');
+const timeouts = require('../data/timeouts');
 const Page = require('../pageobjects/page');
 
 const elementHelper = {
@@ -32,6 +32,7 @@ const elementHelper = {
 		let elements = await elems;
 
 		for (let element of elements) {
+			await element.waitForExist({timeout: timeouts.medium});
 			textArr.push(await this.getText(element));
 		}
 		return textArr;
