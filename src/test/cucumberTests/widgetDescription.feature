@@ -12,7 +12,7 @@ When I click the edit dashboard button
 Then I should see the description "<new_description>"
 And I fill in the description with "<old_description>"
 And I click the update button
-And I open dashboards page
+But I open dashboards page
 
 Examples:
 | dashboard_name | old_description | new_description |

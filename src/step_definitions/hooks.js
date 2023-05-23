@@ -1,8 +1,7 @@
-const {Before, BeforeAll, After} = require('@cucumber/cucumber');
-const Page = require('../../pageobjects/page');
-const LoginPage = require('../../pageobjects/loginPage');
-const sidebarComponent = require('../../pageobjects/sidebarComponent');
-const dashboardsPage = require('../../pageobjects/dashboardsPage');
+const {Before, After} = require('@cucumber/cucumber');
+const Page = require('../pageobjects/page');
+const LoginPage = require('../pageobjects/loginPage');
+const SidebarComponent = require('../pageobjects/sidebarComponent');
 
 After(async function (scenario) {
 	if (scenario.result.status === 'FAILED') {
@@ -16,8 +15,14 @@ Before({tags: '@loginAndSelectProject'}, async function () {
 	if (!hasRunOnce) {
 		await LoginPage.open();
 		await LoginPage.login(process.env.ADMINUSERNAME, process.env.ADMINPASSWORD);
-		await sidebarComponent.openProject('automated_testing_global_mentoring_program');
+		await SidebarComponent.openProject('automated_testing_global_mentoring_program');
 
 		hasRunOnce = true;
+	}
+});
+
+After({tags: '@openDashboardsPage'}, async function (scenario) {
+	if (scenario.result.status === 'PASSED') {
+		await SidebarComponent.openDashboards();
 	}
 });

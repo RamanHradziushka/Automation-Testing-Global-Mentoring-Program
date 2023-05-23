@@ -162,7 +162,14 @@ exports.config = {
 		// <string[]> (name) specify the profile to use
 		profile: [],
 		// <string[]> (file/dir) require files before executing features
-		require: ['./src/features/setup/steps.js', './src/features/setup/hooks.js'],
+		require: [
+			'./src/step_definitions/hooks.js',
+			'./src/step_definitions/addNewWidgetComponent.steps.js',
+			'./src/step_definitions/dashboardPage.steps.js',
+			'./src/step_definitions/editDashboardComponent.steps.js',
+			'./src/step_definitions/loginPage.steps.js',
+			'./src/step_definitions/sidebarComponent.steps.js',
+		],
 		scenarioLevelReporter: false,
 		order: 'defined',
 		// <string> specify a custom snippet syntax
