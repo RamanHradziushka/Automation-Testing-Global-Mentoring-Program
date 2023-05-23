@@ -20,9 +20,3 @@ Before({tags: '@loginAndSelectProject'}, async function () {
 		hasRunOnce = true;
 	}
 });
-
-After({tags: '@openDashboardsPage'}, async function (scenario) {
-	if (scenario.result.status === 'PASSED') {
-		await SidebarComponent.openDashboards();
-	}
-});
