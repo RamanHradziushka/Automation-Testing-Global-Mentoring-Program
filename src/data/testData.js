@@ -123,6 +123,16 @@ const testData = {
 			widgetHeader: 'FLAKY TEST CASES',
 		},
 	],
+	testDashboard: {
+		name: 'API TEST DASHBOARD',
+		description: 'API test Dashboard',
+		share: false,
+	},
+	testDashboardWithoutName: {
+		name: '',
+		description: 'Dashboard without name',
+		share: false,
+	},
 };
 
 exports.testData = testData;
