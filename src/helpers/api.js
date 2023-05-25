@@ -5,7 +5,7 @@ require('dotenv').config();
 module.exports = class Api {
 	constructor() {
 		this.httpClient = axios.create({
-			baseURL: `${testConfig.platform}api/v1/automated_testing_global_mentoring_program`,
+			baseURL: `${testConfig.platform}/api/v1/automated_testing_global_mentoring_program`,
 			timeout: 1000,
 			headers: {
 				Authorization: `bearer ${process.env.ACCESS_TOKEN}`,
