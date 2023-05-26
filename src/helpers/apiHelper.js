@@ -20,6 +20,12 @@ const apiHelper = {
 
 		return await api.put(`/dashboard/${dashboardId}`, dashboard);
 	},
+	updateFullDashboard: async function (dashboardId, newDashboard) {
+		let dashboard = await this.getDashboardById(dashboardId);
+		dashboard = newDashboard;
+
+		return await api.put(`/dashboard/${dashboardId}`, newDashboard);
+	},
 	getDashboardById: async function (dashboardId) {
 		let response = await api.get(`/dashboard/${dashboardId}`);
 
@@ -35,6 +41,14 @@ const apiHelper = {
 		for (let dashboard of dashboards) {
 			await apiHelper.deleteDashboard(`${dashboard.id}`);
 		}
+	},
+	createWidget: async function (widget) {
+		let response = await api.post('/widget', widget);
+
+		return response.id;
+	},
+	addWidgetToDashboard: async function (dashboardId, widget) {
+		return await api.put(`dashboard/${dashboardId}/add`, widget);
 	},
 };
 
