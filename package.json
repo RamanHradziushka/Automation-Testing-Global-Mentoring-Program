@@ -11,7 +11,8 @@
     "wdio": "wdio run ./src/configs/wdio.conf.js",
     "jasmine": "wdio run ./src/configs/jasmine.conf.js",
     "cucumber": "wdio run ./src/configs/cucumber.conf.js",
-    "api": "mocha ./src/test/apiTests/*Tests.js"
+    "api": "mocha ./src/test/apiTests/*Tests.js",
+    "puppeteer": "mocha ./src/test/puppeteerTests/puppeteerTests.js --timeout 60000"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "chai": "^4.3.7",
     "dotenv": "^16.0.3",
     "mocha": "^10.2.0",
+    "puppeteer": "^20.5.0",
     "webdriverio": "^8.7.0",
     "winston": "^3.8.2"
   },
