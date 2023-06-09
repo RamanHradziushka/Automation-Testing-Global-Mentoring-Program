@@ -1,12 +1,11 @@
-const expect = require('chai').expect;
 const {testData} = require('../../../data/testData');
-const dashboardsPage = require('../../../src/pageobjects/dashboardsPage');
-const editDashboardComponent = require('../../../src/pageobjects/editDashboardComponent');
-const LoginPage = require('../../../src/pageobjects/loginPage');
-const sidebarComponent = require('../../../src/pageobjects/sidebarComponent');
+const dashboardsPage = require('../../../pageobjects/dashboardsPage');
+const editDashboardComponent = require('../../../pageobjects/editDashboardComponent');
+const LoginPage = require('../../../pageobjects/loginPage');
+const sidebarComponent = require('../../../pageobjects/sidebarComponent');
 
 describe('Dashboard Page tests', () => {
-	before(async function () {
+	beforeAll(async function () {
 		await LoginPage.open();
 		await LoginPage.login(process.env.ADMINUSERNAME, process.env.ADMINPASSWORD);
 	});
@@ -20,13 +19,13 @@ describe('Dashboard Page tests', () => {
 
 		for (let dashboard of dashboards) {
 			it(`Step 2 - Check description dashboard ${dashboard.name}`, async () => {
-				expect(await dashboardsPage.getDashboardDescriptionByName(dashboard.name)).to.equal(dashboard.description);
+				expect(await dashboardsPage.getDashboardDescriptionByName(dashboard.name)).toEqual(dashboard.description);
 			});
 
 			it(`Step 3.1 - Check description dashboard ${dashboard.name} in the edit component`, async () => {
 				await dashboardsPage.clickDashboardEditByNameButton(dashboard.name);
 
-				expect(await editDashboardComponent.getDescription()).to.equal(dashboard.description);
+				expect(await editDashboardComponent.getDescription()).toEqual(dashboard.description);
 			});
 
 			it(`Step 3.2 - Check description dashboard ${dashboard.name} in the edit component`, async () => {
@@ -44,13 +43,13 @@ describe('Dashboard Page tests', () => {
 
 		for (let dashboard of dashboards) {
 			it(`Step 2 - Check dashboard ${dashboard.name} is shared`, async () => {
-				expect(await dashboardsPage.getDashboardSharedByName(dashboard.name)).to.equal(dashboard.shared);
+				expect(await dashboardsPage.getDashboardSharedByName(dashboard.name)).toEqual(dashboard.shared);
 			});
 
 			it(`Step 3.1 - Check dashboard ${dashboard.name} is shared in the edit component`, async () => {
 				await dashboardsPage.clickDashboardEditByNameButton(dashboard.name);
 
-				expect(await editDashboardComponent.getIsShared()).to.equal(dashboard.shared);
+				expect(await editDashboardComponent.getIsShared()).toEqual(dashboard.shared);
 			});
 
 			it(`Step 3.2 - Check dashboard ${dashboard.name} is shared in the edit component`, async () => {
@@ -59,7 +58,7 @@ describe('Dashboard Page tests', () => {
 		}
 	});
 
-	describe.only('Check dashboards launch statistics', () => {
+	describe('Check dashboards launch statistics', () => {
 		const dashboards = testData.dashboardsLaunchStatisticsArea;
 
 		it('Step 1 - Open project', async () => {
@@ -72,7 +71,7 @@ describe('Dashboard Page tests', () => {
 			});
 
 			it(`Step 3.1 - Check dashboard ${dashboardboard.name} launch statistics`, async () => {
-				expect(await dashboardsPage.getLaunchStatisticsItems()).to.deep.equal(dashboardboard.statuses);
+				expect(await dashboardsPage.getLaunchStatisticsItems()).toEqual(dashboardboard.statuses);
 			});
 
 			it(`Step 3.2 - Check dashboard ${dashboardboard.name} launch statistics`, async () => {

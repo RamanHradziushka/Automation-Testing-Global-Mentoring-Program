@@ -7,8 +7,7 @@ class AddNewWidgetComponent extends BaseComponent {
 	}
 
 	static async getWidgetTypes() {
-		let types = await elementHelper.getTextElementsArray(AddNewWidgetComponent.getWidgetTypeElements());
-		return types;
+		return await elementHelper.getTextElementsArray(AddNewWidgetComponent.getWidgetTypeElements());
 	}
 }
 

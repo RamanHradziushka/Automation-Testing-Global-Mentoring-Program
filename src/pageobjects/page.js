@@ -13,4 +13,8 @@ module.exports = class Page {
 	static open(path = '') {
 		return browser.url(`${TestConfig.platform}${path}`);
 	}
+
+	static saveScreenshot(path) {
+		return browser.saveScreenshot(path);
+	}
 };
