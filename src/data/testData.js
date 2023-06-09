@@ -123,6 +123,55 @@ const testData = {
 			widgetHeader: 'FLAKY TEST CASES',
 		},
 	],
+	testDashboard: {
+		name: 'API TEST DASHBOARD',
+		description: 'API test Dashboard',
+		share: false,
+	},
+	testDashboardSecondName: {
+		name: 'API TEST DASHBOARD SECOND NAME',
+		description: 'API test Dashboard',
+		share: false,
+	},
+	testDashboardWithoutName: {
+		name: '',
+		description: 'Dashboard without name',
+		share: false,
+	},
+	testWidget: {
+		addWidget: {
+			share: true,
+			widgetId: 2,
+			widgetName: 'LAUNCH STATISTICS AREA',
+			widgetOptions: {zoom: false, timeline: 'launch', viewMode: 'area-spline'},
+			widgetPosition: {
+				positionX: 0,
+				positionY: 0,
+			},
+			widgetSize: {
+				height: 6,
+				width: 7,
+			},
+			widgetType: 'statisticTrend',
+		},
+	},
+	testWidgetWithIncorrectId: {
+		addWidget: {
+			share: true,
+			widgetId: 0,
+			widgetName: 'LAUNCH STATISTICS AREA',
+			widgetOptions: {zoom: false, timeline: 'launch', viewMode: 'area-spline'},
+			widgetPosition: {
+				positionX: 0,
+				positionY: 0,
+			},
+			widgetSize: {
+				height: 6,
+				width: 7,
+			},
+			widgetType: 'statisticTrend',
+		},
+	},
 };
 
 exports.testData = testData;
