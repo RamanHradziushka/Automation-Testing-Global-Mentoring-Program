@@ -57,3 +57,46 @@ describe('Check if the edit button is into view', async () => {
 		).to.true;
 	});
 });
+
+describe('Widget can be resized', async () => {
+	let browser, page, dashboardsPage, sidebarComponent;
+
+	before(async function () {
+		browser = await puppeteer.launch({headless: false, args: ['--start-fullscreen']});
+		page = await browser.newPage();
+		dashboardsPage = new DashboardsPage(page);
+		sidebarComponent = new SidebarComponent(page);
+		await LoginPage.open(page);
+		await LoginPage.login(page, process.env.ADMINUSERNAME, process.env.ADMINPASSWORD);
+	});
+
+	after(async function () {
+		await browser.close();
+	});
+
+	afterEach(async function () {
+		if (this.currentTest.state === 'failed') {
+			const screenshotPath = `./screenshots/${this.currentTest.fullTitle().replace(/ /g, '_')}_${Date.now()}.png`;
+			await page.screenshot({path: screenshotPath, fullPage: true});
+		}
+	});
+
+	it('Step 1 - Select dashboard', async () => {
+		await sidebarComponent.openProject('automated_testing_global_mentoring_program');
+		await dashboardsPage.selectDashboard('Puppeteer tests');
+
+		expect(
+			await puppeteerActions.isElementScrolledIntoView(DashboardsPage.getEditDashboardButtonElement(), page),
+			'Edit button is not into view after opening the dashboard page',
+		).to.true;
+	});
+
+	it('Step 2 - Change widget size', async () => {
+		await puppeteerActions.resizeElement(DashboardsPage.getWidgetByName('LAUNCH STATISTICS AREA'), 500, 400, page);
+		let sizeBefore = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+		await dashboardsPage.resizeWidget('LAUNCH STATISTICS AREA', 200, 200);
+		let sizeAfter = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+
+		expect(sizeBefore, `sizeBefore is equal sizeAfter`).not.deep.equal(sizeAfter);
+	});
+});

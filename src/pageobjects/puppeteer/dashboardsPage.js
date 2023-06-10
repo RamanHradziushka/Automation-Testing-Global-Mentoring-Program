@@ -1,4 +1,5 @@
 const elementHelper = require('../../helpers/puppeteer/elementHelper');
+const puppeteerActions = require('../../helpers/puppeteer/puppeteerActions');
 const timeouts = require('../../data/timeouts');
 const Page = require('./page');
 const EditDashboardComponent = require('./editDashboardComponent');
@@ -49,12 +50,20 @@ class DashboardsPage extends Page {
 		return `div.widgets-grid div.react-grid-item:nth-child(${id}) div[class*='widget-name-block']`;
 	}
 
+	static getWidgetByName(name) {
+		return `xpath///div[contains(@class, "widgetsGrid") and contains(., "${name}")]`;
+	}
+
 	static getOverallStatisticsByParameterElement(parameter) {
 		return `xpath///div[contains(text(), "${parameter}")]/parent::div/div[contains(@class, "__amount")]`;
 	}
 
 	static getTitle() {
 		return "span[title='All Dashboards']";
+	}
+
+	static getResizeButtonByWidgetName(name) {
+		return `xpath///div[contains(@class, "widgetsGrid") and contains(., "${name}")]//span[contains(@class, "react-resizable-handle")]`;
 	}
 
 	async selectDashboard(name) {
@@ -94,6 +103,15 @@ class DashboardsPage extends Page {
 
 	async getOverallStatisticsByParameter(parameter) {
 		return await elementHelper.getText(DashboardsPage.getOverallStatisticsByParameterElement(parameter), this.page);
+	}
+
+	async resizeWidget(name, x, y) {
+		await puppeteerActions.moveToElement(DashboardsPage.getWidgetByName(name), this.page);
+		await puppeteerActions.dragAndDropElement(DashboardsPage.getResizeButtonByWidgetName(name), x, y, this.page);
+	}
+
+	async getWidgetSize(name) {
+		return await puppeteerActions.getElementSize(DashboardsPage.getWidgetByName(name), this.page);
 	}
 }
 
