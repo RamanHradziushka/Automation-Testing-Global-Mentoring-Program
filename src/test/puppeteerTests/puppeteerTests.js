@@ -92,11 +92,24 @@ describe('Widget can be resized', async () => {
 	});
 
 	it('Step 2 - Change widget size', async () => {
-		await puppeteerActions.resizeElement(DashboardsPage.getWidgetByName('LAUNCH STATISTICS AREA'), 500, 400, page);
-		let sizeBefore = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
-		await dashboardsPage.resizeWidget('LAUNCH STATISTICS AREA', 200, 200);
-		let sizeAfter = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+		await puppeteerActions.resizeElement(DashboardsPage.getWidgetByName('LAUNCH STATISTICS AREA'), 400, 400, page);
+		let widgetSizeBefore = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+		let launchStatisticsItemsSizeBefore = await dashboardsPage.getLaunchStatisticsItemsSize();
 
-		expect(sizeBefore, `sizeBefore is equal sizeAfter`).not.deep.equal(sizeAfter);
+		await dashboardsPage.resizeWidget('LAUNCH STATISTICS AREA', 200, 200);
+
+		let widgetSizeAfter = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+		let launchStatisticsItemsSizeAfter = await dashboardsPage.getLaunchStatisticsItemsSize();
+
+		expect(widgetSizeBefore, `widgetSizeBefore is equal widgetSizeAfter`).not.deep.equal(widgetSizeAfter);
+		expect(launchStatisticsItemsSizeBefore, `launchStatisticsItemsSizeBefore is equal launchStatisticsItemsSizeAfter`).not.deep.equal(launchStatisticsItemsSizeAfter);
+	});
+
+	it('Step 3 - Reload page', async () => {
+		let sizeBeforeReload = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+		await puppeteerActions.reloadPage(page);
+		let sizeAfterReload = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
+
+		expect(sizeBeforeReload, `sizeBeforeReload is not equal sizeAfterReload`).deep.equal(sizeAfterReload);
 	});
 });
