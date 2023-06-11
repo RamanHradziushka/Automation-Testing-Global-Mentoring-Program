@@ -76,7 +76,7 @@ class DashboardsPage extends Page {
 	}
 
 	async getWidgetsNames() {
-		return await elementHelper.getTextElementsArray(DashboardsPage.getWidgetHeaderElement(), this.page);
+		return await elementHelper.getTextElementsArray(DashboardsPage.getWidgetHeaderElements(), this.page);
 	}
 
 	async getLaunchStatisticsItems() {
@@ -125,6 +125,16 @@ class DashboardsPage extends Page {
 
 	async getLaunchStatisticsItemsSize() {
 		return await puppeteerActions.getElementsSize(DashboardsPage.getLaunchStatisticsAreaItemElements(), this.page);
+	}
+
+	async getWidgetsLocations() {
+		let widgetNames = await this.getWidgetsNames();
+		let widgetLocations = [];
+		for (let widgetName of widgetNames) {
+			widgetLocations.push(await this.getWidgetSize(widgetName));
+		}
+
+		return widgetLocations;
 	}
 }
 

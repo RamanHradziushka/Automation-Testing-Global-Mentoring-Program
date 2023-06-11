@@ -95,14 +95,27 @@ describe('Widget can be resized', async () => {
 		await puppeteerActions.resizeElement(DashboardsPage.getWidgetByName('LAUNCH STATISTICS AREA'), 400, 400, page);
 		let widgetSizeBefore = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
 		let launchStatisticsItemsSizeBefore = await dashboardsPage.getLaunchStatisticsItemsSize();
+		let widgetsLocationsBefore = await dashboardsPage.getWidgetsLocations();
 
 		await dashboardsPage.resizeWidget('LAUNCH STATISTICS AREA', 200, 200);
 
 		let widgetSizeAfter = await dashboardsPage.getWidgetSize('LAUNCH STATISTICS AREA');
 		let launchStatisticsItemsSizeAfter = await dashboardsPage.getLaunchStatisticsItemsSize();
+		let widgetsLocationsAfter = await dashboardsPage.getWidgetsLocations();
 
-		expect(widgetSizeBefore, `widgetSizeBefore is equal widgetSizeAfter`).not.deep.equal(widgetSizeAfter);
-		expect(launchStatisticsItemsSizeBefore, `launchStatisticsItemsSizeBefore is equal launchStatisticsItemsSizeAfter`).not.deep.equal(launchStatisticsItemsSizeAfter);
+		expect(widgetSizeBefore, `widgetSizeBefore ${JSON.stringify(widgetSizeBefore)} is equal widgetSizeAfter ${JSON.stringify(widgetSizeAfter)}`).not.deep.equal(
+			widgetSizeAfter,
+		);
+		expect(
+			launchStatisticsItemsSizeBefore,
+			`launchStatisticsItemsSizeBefore ${JSON.stringify(launchStatisticsItemsSizeBefore)} is equal launchStatisticsItemsSizeAfter ${JSON.stringify(
+				launchStatisticsItemsSizeAfter,
+			)}`,
+		).not.deep.equal(launchStatisticsItemsSizeAfter);
+		expect(
+			widgetsLocationsBefore,
+			`widgetsLocationsBefore ${JSON.stringify(widgetsLocationsBefore)} is equal widgetsLocationsAfter ${JSON.stringify(widgetsLocationsAfter)}`,
+		).not.deep.equal(widgetsLocationsAfter);
 	});
 
 	it('Step 3 - Reload page', async () => {
