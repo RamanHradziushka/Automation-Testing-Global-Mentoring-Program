@@ -34,8 +34,12 @@ class DashboardsPage extends Page {
 		return 'div.widgets-grid div.react-grid-item:nth-child(1) div[class*="statistics"]:nth-child(1) span[data-id*="statistics"] > span:nth-child(2)';
 	}
 
-	static getLaunchStatisticsAreaItemElements() {
+	/*static getLaunchStatisticsAreaItemElements() {
 		return 'div.widgets-grid div.react-grid-item:nth-child(2) div[class*="statistics"]:nth-child(1) span[data-id*="statistics"] > span:nth-child(2)';
+	}*/
+
+	static getLaunchStatisticsAreaItemElements() {
+		return 'xpath///div[contains(@class, "widgetsGrid") and contains(., "LAUNCH STATISTICS AREA")]//span[contains(@data-id, "statistics")]/span[2]';
 	}
 
 	static getAddNewWidgetButtonElement() {
@@ -112,6 +116,15 @@ class DashboardsPage extends Page {
 
 	async getWidgetSize(name) {
 		return await puppeteerActions.getElementSize(DashboardsPage.getWidgetByName(name), this.page);
+	}
+
+	async setWidgetSize(name, x, y) {
+		let size = await puppeteerActions.getElementSize(DashboardsPage.getWidgetByName(name), this.page);
+		await puppeteerActions.dragAndDropElement(DashboardsPage.getResizeButtonByWidgetName(name), x - size.width, y - size.height, this.page);
+	}
+
+	async getLaunchStatisticsItemsSize() {
+		return await puppeteerActions.getElementsSize(DashboardsPage.getLaunchStatisticsAreaItemElements(), this.page);
 	}
 }
 

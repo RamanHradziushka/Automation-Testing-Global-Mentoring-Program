@@ -29,8 +29,8 @@ const puppeteerActions = {
 				} else {
 					element = document.querySelector(locator);
 				}
-				element.style.width = `${width}px`;
 				element.style.height = `${height}px`;
+				element.style.width = `${width}px`;
 			},
 			locator,
 			width,
@@ -101,6 +101,21 @@ const puppeteerActions = {
 		const elementBox = await element.boundingBox();
 
 		return elementBox;
+	},
+
+	getElementsSize: async function (locator, page) {
+		await page.waitForSelector(locator, {timeout: timeouts.medium, visible: true});
+		const elements = await page.$$(locator);
+		boxes = [];
+		for (let element of elements) {
+			boxes.push(await element.boundingBox());
+		}
+
+		return boxes;
+	},
+
+	reloadPage: async function (page, timeout = 1000) {
+		await page.reload({timeout: timeout});
 	},
 };
 
