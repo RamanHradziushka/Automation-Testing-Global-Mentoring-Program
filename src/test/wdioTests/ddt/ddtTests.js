@@ -1,9 +1,9 @@
 const expect = require('chai').expect;
 const {testData} = require('../../../data/testData');
-const dashboardsPage = require('../../../src/pageobjects/dashboardsPage');
-const editDashboardComponent = require('../../../src/pageobjects/editDashboardComponent');
-const LoginPage = require('../../../src/pageobjects/loginPage');
-const sidebarComponent = require('../../../src/pageobjects/sidebarComponent');
+const dashboardsPage = require('../../../pageobjects/dashboardsPage');
+const editDashboardComponent = require('../../../pageobjects/editDashboardComponent');
+const LoginPage = require('../../../pageobjects/loginPage');
+const sidebarComponent = require('../../../pageobjects/sidebarComponent');
 
 describe('Dashboard Page tests', () => {
 	before(async function () {

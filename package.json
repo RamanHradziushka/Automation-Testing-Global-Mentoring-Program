@@ -12,7 +12,10 @@
     "jasmine": "wdio run ./src/configs/jasmine.conf.js",
     "cucumber": "wdio run ./src/configs/cucumber.conf.js",
     "api": "mocha ./src/test/apiTests/*Tests.js",
-    "puppeteer": "mocha ./src/test/puppeteerTests/puppeteerTests.js --timeout 60000"
+    "puppeteer": "mocha ./src/test/puppeteerTests/puppeteerTests.js --timeout 60000",
+    "saucelabs": "wdio run ./src/configs/wdio.shared.conf.js",
+    "docker:build-image": "docker build -t api-tests .",
+    "docker": "npm run docker:build-image && docker run api-tests"
   },
   "repository": {
     "type": "git",
@@ -39,8 +42,9 @@
     "@wdio/jasmine-framework": "^8.8.6",
     "@wdio/local-runner": "^8.8.6",
     "@wdio/mocha-framework": "^8.8.0",
+    "@wdio/sauce-service": "^8.11.2",
     "@wdio/spec-reporter": "^8.8.0",
-    "chromedriver": "^112.0.0",
+    "chromedriver": "^114.0.0",
     "wdio-chromedriver-service": "^8.1.1"
   }
 }

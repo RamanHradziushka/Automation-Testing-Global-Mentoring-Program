@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const {testData} = require('../../../data/testData');
+const {testData} = require('../../data/testData');
 const addNewWidgetComponent = require('../../pageobjects/addNewWidgetComponent');
 const dashboardsPage = require('../../pageobjects/dashboardsPage');
 const LoginPage = require('../../pageobjects/loginPage');
