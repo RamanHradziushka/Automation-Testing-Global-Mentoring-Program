@@ -1,9 +1,18 @@
 const expect = require('chai').expect;
 const {testData} = require('../../data/testData');
 const apiHelper = require('../../helpers/apiHelper');
+const teamsNotifier = require('../../helpers/teamsNotifier');
 
 describe('Api test for dashboard', function () {
 	let dashboardId;
+
+	before(async function () {
+		await teamsNotifier.sendMessageToTeams('API test run started');
+	});
+
+	after(async function () {
+		await teamsNotifier.sendMessageToTeams('API test run finished');
+	});
 
 	describe('Dashboard can be created', function () {
 		it('Step 1 - Create dashboard', async function () {
